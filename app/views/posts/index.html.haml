@@ -1,0 +1,22 @@
+.wrapper
+  .header
+    .header__left
+      Homework App
+    .header__right
+      .header__right--signUp
+        新規登録
+      .header__right--login
+        ログイン
+  .main
+    -# = form_for [@post] each do |f|
+    .main__contents
+      .contents__content
+        .contents__content__text
+          -# = post.content
+        .contents__content__right
+          .contents__content__right__name
+            
+          .contents__content__right__date
+            -# = post.created_at.strftime("%Y年%m月%d日 %H時%M分")
+  .footer
+    Homework App 2020
