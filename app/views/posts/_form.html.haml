@@ -1,0 +1,5 @@
+.masseges  
+  = form_for @post, html: { class:"form js "} do |f|        
+    .input_box
+      = f.text_field :content, class:"input-box__textArea", placeholder: "25文字以内"
+    = f.submit "投稿する", class: "input-box__submitBtn"

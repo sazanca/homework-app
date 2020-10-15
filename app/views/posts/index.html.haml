@@ -1,27 +1,26 @@
 .wrapper
   .header
-    .header__left
-      = link_to "Homework App",root_path
+    = link_to "Homework App",root_path, class:"header__left"
     .header__right
       -if user_signed_in?
+        = link_to
         = link_to "ログアウト", destroy_user_session_path, method: :delete
       -else
         = link_to "新規登録", new_user_session_path, class: "header__right--signUp"
         = link_to "ログイン", new_user_registration_path, class: "header__right--login"
   .main
     .main__contents
-      .main__contents__content
-        .main__contents__content__text
-          text
-        .main__contents__content__rightBox
-          .main__contents__content__rightBox__name
-            文科
-          .main__contents__content__rightBox__date
-            日付
+      - @posts.each do |post|
+        .main__contents__content
+          %p.main__contents__content__text
+            = post.content
+          .main__contents__content__rightBox
+            .main__contents__content__rightBox__name
+              = post.user.nickname
+            .main__contents__content__rightBox__date
+              = post.created_at.strftime("%Y年%m月%d日 %H時%M分")
     .form
-      %form.masseges          
-        .input_box
-          %input{type: "text",class:"input-box__textArea", placeholder: "25文字以内"}
-          %input{type: "submit", value: "投稿する", class: "input-box__submitBtn"}
+      = render 'form'
+     
     .footer
       Homework App 2020

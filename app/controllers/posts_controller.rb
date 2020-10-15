@@ -2,21 +2,32 @@ class PostsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
   
   def index
-    @posts = Post.all
-  end
-
-  def new
     @post = Post.new
+    @posts = Post.includes(:user)
+    # @posts = Post.order('created_at ASC')
   end
 
   def create
-    Post.create(post_params)
-    redirect_to root_path
+    @post = Post.create(post_params)
+    respond_to do |format|
+      format.html { redirect_to :root }
+      format.json { render json: @post}
+    end
+  
+    if @post.save
+      respond_to do |format|
+        format.json
+      end
+    else
+      flash.now[:alert] = 'メッセージを入力してください。'
+      render :index
+    end
   end
 
   def show
-    @post = Post.new
+    @posts = Post.find(params[:id])
   end
+  
 
   private
 
