@@ -1,7 +1,7 @@
 $(function() {
-  $('#new_post').on('submit', function(e){
+  $('.js_form').on('submit', function(e){
     e.preventDefault();
-    let post = $('.input-box__textArea').val();
+    let post = $('.js-form__text-field').val();
     $.ajax ({
       type: 'POST',
       url: '/posts',
@@ -13,9 +13,9 @@ $(function() {
       dataType: 'json',
     })
     .done(function(data) {
-      let html = $('.main__contents_content').append(data.content);
+      let html = $('.main__contents_content_text').append(data.content);
       $('.main__contents_content').append(html);
-      $('.input-box__textArea').val('');
+      $('js-form__text-field').val('');
     })
     .fail(function() {
       alert('error');

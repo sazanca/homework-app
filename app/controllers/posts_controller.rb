@@ -4,19 +4,14 @@ class PostsController < ApplicationController
   def index
     @post = Post.new
     @posts = Post.includes(:user)
-    # @posts = Post.order('created_at ASC')
   end
 
   def create
     @post = Post.create(post_params)
-    respond_to do |format|
-      format.html { redirect_to :root }
-      format.json { render json: @post}
-    end
-  
     if @post.save
       respond_to do |format|
-        format.json
+        format.html { redirect_to :root }
+        format.json { render json: @post}
       end
     else
       flash.now[:alert] = 'メッセージを入力してください。'
