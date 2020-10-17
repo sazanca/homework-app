@@ -15,7 +15,7 @@ class PostsController < ApplicationController
       end
     else
       flash.now[:alert] = 'メッセージを入力してください。'
-      render :index
+      redirect_to action: :index
     end
   end
 

@@ -1,6 +1,7 @@
 * {
   box-sizing: border-box;
 }
+
 .wrapper {
   background-color: #F0E8E4;
   height: 100vh;
@@ -22,20 +23,23 @@
   &__right {
     display: flex;
     width: 35%;
+    text-decoration: solid;
     &--signUp {
       margin-right: 30px;
       display: block;
-      text-decoration: none;
-      color: #473838;
+      // text-decoration: none;
+      // color: #473838;
     }
     &--login {
       display: block;
       text-decoration: none;
       color: #473838;
     }
-
   }
-
+  a{
+    text-decoration:none;
+    color: #473838;
+  }
 }
 
 .main {
@@ -75,12 +79,15 @@
     }
   }
   .form {
-    background-color: #d2d2d2;
-    // height: 90px;
-    padding: 20px 50px;
-    margin: 30px 0px;
+    // background-color: #d2d2d2;
+    // // height: 90px;
+    // padding: 20px 50px;
+    // margin: 30px 0px;
     form {
-      // display: flex;
+      background-color: #d2d2d2;
+      // height: 90px;
+      padding: 20px 50px;
+      margin: 30px 0px;
       .input-box {
         margin: 0 auto;
         width: 80%;
@@ -100,6 +107,7 @@
     }
   }
 }
+
 
 .footer {
   margin: 0 auto;

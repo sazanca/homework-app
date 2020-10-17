@@ -3,7 +3,6 @@
     = link_to "Homework App",root_path, class:"header__left"
     .header__right
       -if user_signed_in?
-        = link_to
         = link_to "ログアウト", destroy_user_session_path, method: :delete
       -else
         = link_to "新規登録", new_user_session_path, class: "header__right--signUp"
@@ -20,7 +19,7 @@
             .main__contents__content__rightBox__date
               = post.created_at.strftime("%Y年%m月%d日 %H時%M分")
     .form
-      = render 'form'
-     
+      -if user_signed_in?
+        = render 'form'     
     .footer
       Homework App 2020
